@@ -1,0 +1,201 @@
+.top5-page {
+  min-height: 100vh;
+  padding: 2.5rem 2rem 4rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.top5-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.top5-back {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  transition: color 0.2s, border-color 0.2s;
+  cursor: pointer;
+  background: none;
+  font: inherit;
+}
+
+.top5-back:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+
+.top5-title {
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  flex: 1;
+}
+
+.top5-toggle {
+  display: flex;
+  gap: 0.4rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  padding: 0.3rem;
+}
+
+.top5-toggle-btn {
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  transition: all 0.2s;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font: inherit;
+}
+
+.top5-toggle-btn:hover { color: var(--text); }
+
+.top5-toggle-btn.active {
+  background: var(--green);
+  color: #000;
+  box-shadow: 0 2px 12px rgba(29,185,84,0.35);
+}
+
+.top5-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 650px) {
+  .top5-body { grid-template-columns: 1fr; }
+  .top5-header { flex-direction: column; align-items: flex-start; }
+}
+
+.top5-section-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 1rem;
+}
+
+.top5-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.top5-skeleton {
+  height: 80px;
+  border-radius: 14px;
+  background: var(--surface);
+  animation: skeleton-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.9; }
+}
+
+/* Base card */
+.top5-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, background 0.2s, box-shadow 0.2s, border-color 0.2s;
+  animation: fade-up 0.4s ease both;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.top5-card:hover {
+  transform: translateY(-2px);
+  background: var(--surface2);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+
+/* Rank-specific left border colours */
+.rank-1 { border-left: 3px solid #FFD700; }
+.rank-2 { border-left: 3px solid #C0C0C0; }
+.rank-3 { border-left: 3px solid #CD7F32; }
+.rank-4, .rank-5 { border-left: 3px solid var(--border); }
+
+.rank-1:hover { border-left-color: #FFD700; box-shadow: 0 8px 30px rgba(255,215,0,0.12); }
+.rank-2:hover { border-left-color: #C0C0C0; box-shadow: 0 8px 30px rgba(192,192,192,0.1); }
+.rank-3:hover { border-left-color: #CD7F32; box-shadow: 0 8px 30px rgba(205,127,50,0.1); }
+
+.top5-rank {
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  width: 32px;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.rank-1 .top5-rank { color: #FFD700; }
+.rank-2 .top5-rank { color: #C0C0C0; }
+.rank-3 .top5-rank { color: #CD7F32; }
+.rank-4 .top5-rank, .rank-5 .top5-rank { color: var(--text-faint); }
+
+.top5-img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+  background: var(--surface2);
+}
+
+.top5-img--circle { border-radius: 50%; }
+
+.top5-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.top5-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.top5-sub {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 0.2rem;
+}
+
+.top5-arrow {
+  font-size: 1rem;
+  color: var(--text-faint);
+  opacity: 0;
+  transition: opacity 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+
+.top5-card:hover .top5-arrow {
+  opacity: 1;
+  color: var(--green);
+}

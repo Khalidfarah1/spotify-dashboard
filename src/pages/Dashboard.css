@@ -6,6 +6,28 @@
   padding: 2.5rem 2rem 4rem;
 }
 
+.dashboard-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.top5-link {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--green);
+  padding: 0.45rem 1.1rem;
+  border: 1px solid rgba(29,185,84,0.3);
+  border-radius: 9999px;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.top5-link:hover {
+  background: rgba(29,185,84,0.1);
+  border-color: var(--green);
+}
+
 .dashboard-columns {
   display: grid;
   grid-template-columns: 1fr 1fr;

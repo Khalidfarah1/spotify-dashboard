@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import { exchangeCodeForToken, getToken } from '../auth'
 import { getUser, getTopTracks, getTopArtists, getRecentlyPlayed } from '../api'
 import type { SpotifyUser, SpotifyTrack, SpotifyArtist, SpotifyRecentlyPlayedItem, TimeRange } from '../types'
+import { Link } from 'react-router-dom'
 import Header from '../components/Header'
 import TimeRangeToggle from '../components/TimeRangeToggle'
 import TopTracks from '../components/TopTracks'
@@ -86,7 +87,10 @@ export default function Dashboard() {
     <div className="dashboard">
       <Header user={user} />
       <div className="dashboard-body">
-        <TimeRangeToggle value={timeRange} onChange={setTimeRange} />
+        <div className="dashboard-top-bar">
+          <TimeRangeToggle value={timeRange} onChange={setTimeRange} />
+          <Link to="/top5" className="top5-link">View Top 5 ↗</Link>
+        </div>
         <div className="dashboard-columns">
           <TopTracks tracks={tracks} loading={loadingTracks} />
           <TopArtists artists={artists} loading={loadingArtists} />
