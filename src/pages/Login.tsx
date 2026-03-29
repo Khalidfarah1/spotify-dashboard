@@ -13,6 +13,7 @@ export default function Login() {
       <button className="login-btn" onClick={redirectToSpotifyLogin}>
         Connect with Spotify
       </button>
+      <p className="login-credit">Built by Khalid Farah</p>
     </div>
   )
 }

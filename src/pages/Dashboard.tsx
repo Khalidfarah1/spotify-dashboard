@@ -93,6 +93,7 @@ export default function Dashboard() {
         </div>
         <RecentlyPlayed items={recentlyPlayed} loading={loadingRecent} />
       </div>
+      <footer className="dashboard-footer">Built by Khalid Farah</footer>
     </div>
   )
 }

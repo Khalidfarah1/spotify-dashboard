@@ -1,4 +1,5 @@
 .login-page {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,3 +42,11 @@
 
 .login-btn:hover { background: var(--green-dark); transform: scale(1.03); }
 .login-btn:active { transform: scale(0.98); }
+
+.login-credit {
+  position: absolute;
+  bottom: 1.5rem;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
