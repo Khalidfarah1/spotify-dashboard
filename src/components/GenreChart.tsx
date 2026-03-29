@@ -9,7 +9,7 @@ interface Props {
 function getTopGenres(artists: SpotifyArtist[], limit = 8): { genre: string; count: number }[] {
   const counts: Record<string, number> = {}
   for (const artist of artists) {
-    for (const genre of artist.genres) {
+    for (const genre of (artist.genres ?? [])) {
       counts[genre] = (counts[genre] ?? 0) + 1
     }
   }
