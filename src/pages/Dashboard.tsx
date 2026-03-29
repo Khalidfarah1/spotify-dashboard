@@ -51,7 +51,7 @@ export default function Dashboard() {
   // Fetch user profile once token is available
   useEffect(() => {
     if (!token) return
-    getUser(token).then(setUser).catch(() => setError('Failed to load profile.'))
+    getUser(token).then(setUser).catch((err) => setError(`Failed to load profile: ${err.message}`))
   }, [token])
 
   // Fetch top tracks + artists when token or time range changes
