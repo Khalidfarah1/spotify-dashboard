@@ -1,0 +1,82 @@
+.genre-chart {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.genre-chart h2 {
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.genre-empty {
+  font-size: 0.85rem;
+  color: var(--text-faint);
+}
+
+.genre-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.genre-skeleton {
+  height: 28px;
+  border-radius: 6px;
+  background: var(--surface2);
+  animation: skeleton-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.9; }
+}
+
+.genre-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 24px;
+  align-items: center;
+  gap: 0.75rem;
+  animation: fade-in 0.35s ease both;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.genre-name {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.genre-bar-track {
+  height: 6px;
+  background: var(--surface2);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.genre-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--green), #4ade80);
+  border-radius: 9999px;
+  width: 0%;
+  transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.genre-count {
+  font-size: 0.72rem;
+  color: var(--text-faint);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}

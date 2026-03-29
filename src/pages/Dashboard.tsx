@@ -10,6 +10,7 @@ import TopTracks from '../components/TopTracks'
 import TopArtists from '../components/TopArtists'
 import RecentlyPlayed from '../components/RecentlyPlayed'
 import StatsBar from '../components/StatsBar'
+import GenreChart from '../components/GenreChart'
 import './Dashboard.css'
 
 export default function Dashboard() {
@@ -97,7 +98,10 @@ export default function Dashboard() {
           <TopTracks tracks={tracks} loading={loadingTracks} />
           <TopArtists artists={artists} loading={loadingArtists} />
         </div>
-        <RecentlyPlayed items={recentlyPlayed} loading={loadingRecent} />
+        <div className="dashboard-bottom-row">
+          <GenreChart artists={artists} loading={loadingArtists} />
+          <RecentlyPlayed items={recentlyPlayed} loading={loadingRecent} />
+        </div>
       </div>
       <footer className="dashboard-footer">Built by Khalid Farah</footer>
     </div>
