@@ -15,10 +15,28 @@
   --radius: 14px;
 }
 
+[data-theme="light"] {
+  --green: #17a34a;
+  --green-dark: #15803d;
+  --green-glow: rgba(23,163,74,0.1);
+  --bg: #f5f5f5;
+  --bg2: #ffffff;
+  --surface: #ffffff;
+  --surface2: #f0f0f0;
+  --border: rgba(0,0,0,0.08);
+  --text: #111111;
+  --text-dim: #555555;
+  --text-faint: #999999;
+}
+
+*, *::before, *::after {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.15s ease;
+}
+
 body {
   background: var(--bg);
   background-image:
-    radial-gradient(ellipse 80% 40% at 50% -10%, rgba(29,185,84,0.08) 0%, transparent 70%);
+    radial-gradient(ellipse 80% 40% at 50% -10%, var(--green-glow) 0%, transparent 70%);
   color: var(--text);
   font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 15px;

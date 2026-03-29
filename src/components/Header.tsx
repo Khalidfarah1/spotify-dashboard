@@ -5,9 +5,11 @@ import './Header.css'
 
 interface Props {
   user: SpotifyUser
+  theme: 'dark' | 'light'
+  onToggleTheme: () => void
 }
 
-export default function Header({ user }: Props) {
+export default function Header({ user, theme, onToggleTheme }: Props) {
   const navigate = useNavigate()
   const avatar = user.images?.[0]?.url
 
@@ -20,6 +22,9 @@ export default function Header({ user }: Props) {
     <header className="header">
       <div className="header-brand"><span>Spotify</span> Stats</div>
       <div className="header-user">
+        <button className="header-theme-btn" onClick={onToggleTheme} title="Toggle theme">
+          {theme === 'dark' ? '☀️' : '🌙'}
+        </button>
         {avatar && <img className="header-avatar" src={avatar} alt={user.display_name} />}
         <span className="header-name">{user.display_name}</span>
         <button className="header-logout" onClick={handleLogout}>Log out</button>

@@ -14,7 +14,12 @@ import GenreChart from '../components/GenreChart'
 import AudioFeaturesChart from '../components/AudioFeaturesChart'
 import './Dashboard.css'
 
-export default function Dashboard() {
+interface Props {
+  theme: 'dark' | 'light'
+  onToggleTheme: () => void
+}
+
+export default function Dashboard({ theme, onToggleTheme }: Props) {
   const navigate = useNavigate()
   const [searchParams, setSearchParams] = useSearchParams()
 
@@ -97,7 +102,7 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard">
-      <Header user={user} />
+      <Header user={user} theme={theme} onToggleTheme={onToggleTheme} />
       <div className="dashboard-body">
         <StatsBar tracks={tracks} artists={artists} recentlyPlayed={recentlyPlayed} loading={loadingTracks || loadingArtists} />
         <div className="dashboard-top-bar">

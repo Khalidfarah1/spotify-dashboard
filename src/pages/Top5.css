@@ -27,6 +27,19 @@
 
 .top5-back:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
 
+.top5-theme-btn {
+  font-size: 1rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  transition: background 0.2s;
+}
+
+.top5-theme-btn:hover { background: var(--surface2); }
+
 .top5-title {
   font-size: 1.8rem;
   font-weight: 900;

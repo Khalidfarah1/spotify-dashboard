@@ -12,7 +12,12 @@ const TIME_LABELS: Record<TimeRange, string> = {
   long_term: 'All Time',
 }
 
-export default function Top5() {
+interface Props {
+  theme: 'dark' | 'light'
+  onToggleTheme: () => void
+}
+
+export default function Top5({ theme, onToggleTheme }: Props) {
   const navigate = useNavigate()
   const [timeRange, setTimeRange] = useState<TimeRange>('short_term')
   const [tracks, setTracks] = useState<SpotifyTrack[]>([])
@@ -41,6 +46,7 @@ export default function Top5() {
     <div className="top5-page">
       <div className="top5-header">
         <button className="top5-back" onClick={() => navigate('/dashboard')}>← Back</button>
+        <button className="top5-theme-btn" onClick={onToggleTheme}>{theme === 'dark' ? '☀️' : '🌙'}</button>
         <h1 className="top5-title">Your Top 5</h1>
         {!loading && (
           <button className="top5-share-btn" onClick={() => setShowShare(true)}>Share ↗</button>
