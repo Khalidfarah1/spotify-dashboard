@@ -1,0 +1,39 @@
+.top-artists h2 { font-size: 1rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-dim); }
+
+.artist-list { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.artist-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.artist-item:hover { background: var(--surface); }
+
+.artist-rank {
+  width: 20px;
+  text-align: right;
+  font-size: 0.8rem;
+  color: var(--text-faint);
+  flex-shrink: 0;
+}
+
+.artist-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: var(--surface);
+}
+
+.artist-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
