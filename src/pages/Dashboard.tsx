@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { exchangeCodeForToken, getToken } from '../auth'
-import { getUser, getTopTracks, getTopArtists, getRecentlyPlayed } from '../api'
-import type { SpotifyUser, SpotifyTrack, SpotifyArtist, SpotifyRecentlyPlayedItem, TimeRange } from '../types'
+import { getUser, getTopTracks, getTopArtists, getRecentlyPlayed, getAudioFeatures } from '../api'
+import type { SpotifyUser, SpotifyTrack, SpotifyArtist, SpotifyRecentlyPlayedItem, TimeRange, AudioFeatures } from '../types'
 import { Link } from 'react-router-dom'
 import Header from '../components/Header'
 import TimeRangeToggle from '../components/TimeRangeToggle'
@@ -11,6 +11,7 @@ import TopArtists from '../components/TopArtists'
 import RecentlyPlayed from '../components/RecentlyPlayed'
 import StatsBar from '../components/StatsBar'
 import GenreChart from '../components/GenreChart'
+import AudioFeaturesChart from '../components/AudioFeaturesChart'
 import './Dashboard.css'
 
 export default function Dashboard() {
@@ -26,6 +27,8 @@ export default function Dashboard() {
   const [loadingTracks, setLoadingTracks] = useState(false)
   const [loadingArtists, setLoadingArtists] = useState(false)
   const [loadingRecent, setLoadingRecent] = useState(false)
+  const [audioFeatures, setAudioFeatures] = useState<AudioFeatures[]>([])
+  const [loadingAudio, setLoadingAudio] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
   // Handle OAuth callback
@@ -63,7 +66,14 @@ export default function Dashboard() {
     setLoadingTracks(true)
     setLoadingArtists(true)
     getTopTracks(token, timeRange)
-      .then(setTracks)
+      .then(t => {
+        setTracks(t)
+        setLoadingAudio(true)
+        getAudioFeatures(token, t.map(tr => tr.id))
+          .then(setAudioFeatures)
+          .catch(() => setAudioFeatures([]))
+          .finally(() => setLoadingAudio(false))
+      })
       .catch(() => setTracks([]))
       .finally(() => setLoadingTracks(false))
     getTopArtists(token, timeRange)
@@ -100,8 +110,9 @@ export default function Dashboard() {
         </div>
         <div className="dashboard-bottom-row">
           <GenreChart artists={artists} loading={loadingArtists} />
-          <RecentlyPlayed items={recentlyPlayed} loading={loadingRecent} />
+          <AudioFeaturesChart features={audioFeatures} loading={loadingAudio} />
         </div>
+        <RecentlyPlayed items={recentlyPlayed} loading={loadingRecent} />
       </div>
       <footer className="dashboard-footer">Built by Khalid Farah</footer>
     </div>

@@ -1,4 +1,4 @@
-import type { SpotifyUser, SpotifyTrack, SpotifyArtist, SpotifyRecentlyPlayedItem, TimeRange, TopTracksResponse, TopArtistsResponse, RecentlyPlayedResponse } from './types'
+import type { SpotifyUser, SpotifyTrack, SpotifyArtist, SpotifyRecentlyPlayedItem, TimeRange, TopTracksResponse, TopArtistsResponse, RecentlyPlayedResponse, AudioFeatures, AudioFeaturesResponse } from './types'
 import { clearToken } from './auth'
 
 const BASE = 'https://api.spotify.com/v1'
@@ -37,6 +37,14 @@ export async function getTopArtists(token: string, timeRange: TimeRange): Promis
     token
   )
   return data.items
+}
+
+export async function getAudioFeatures(token: string, trackIds: string[]): Promise<AudioFeatures[]> {
+  const data = await spotifyFetch<AudioFeaturesResponse>(
+    `/audio-features?ids=${trackIds.slice(0, 10).join(',')}`,
+    token
+  )
+  return data.audio_features.filter(Boolean)
 }
 
 export async function getRecentlyPlayed(token: string): Promise<SpotifyRecentlyPlayedItem[]> {

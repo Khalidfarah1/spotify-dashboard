@@ -37,6 +37,19 @@ export interface SpotifyRecentlyPlayedItem {
   played_at: string
 }
 
+export interface AudioFeatures {
+  id: string
+  energy: number
+  danceability: number
+  valence: number
+  acousticness: number
+  instrumentalness: number
+}
+
+export interface AudioFeaturesResponse {
+  audio_features: AudioFeatures[]
+}
+
 export interface TopTracksResponse {
   items: SpotifyTrack[]
 }
