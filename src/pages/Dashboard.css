@@ -1,0 +1,24 @@
+.dashboard { min-height: 100vh; }
+
+.dashboard-body {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.dashboard-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.dashboard-error {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-dim);
+}
+
+@media (max-width: 700px) {
+  .dashboard-columns { grid-template-columns: 1fr; }
+  .dashboard-body { padding: 1rem; }
+}
