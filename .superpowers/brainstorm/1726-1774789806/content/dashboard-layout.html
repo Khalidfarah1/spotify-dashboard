@@ -1,0 +1,91 @@
+<h2>Spotify Dashboard — Layout Options</h2>
+<p class="subtitle">Pick the layout that feels right for the dashboard</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0d1117;padding:16px;font-family:monospace;font-size:11px;">
+      <div style="background:#1db954;color:#000;padding:4px 10px;border-radius:20px;display:inline-block;margin-bottom:10px;font-size:10px;font-weight:700">● Connected as Khalid</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:6px;">
+        <div style="background:#111;border:1px solid #222;border-radius:6px;padding:8px;text-align:center">
+          <div style="color:#1db954;font-size:16px;font-weight:700">247</div>
+          <div style="color:#555;font-size:9px">Top Tracks</div>
+        </div>
+        <div style="background:#111;border:1px solid #222;border-radius:6px;padding:8px;text-align:center">
+          <div style="color:#1db954;font-size:16px;font-weight:700">89</div>
+          <div style="color:#555;font-size:9px">Top Artists</div>
+        </div>
+        <div style="background:#111;border:1px solid #222;border-radius:6px;padding:8px;text-align:center">
+          <div style="color:#1db954;font-size:16px;font-weight:700">52</div>
+          <div style="color:#555;font-size:9px">Recent Plays</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+        <div style="background:#111;border:1px solid #222;border-radius:6px;padding:8px;">
+          <div style="color:#888;font-size:9px;margin-bottom:4px">TOP TRACKS</div>
+          <div style="color:#ccc;font-size:10px">1. Blinding Lights</div>
+          <div style="color:#ccc;font-size:10px">2. Starboy</div>
+          <div style="color:#ccc;font-size:10px">3. Save Your Tears</div>
+        </div>
+        <div style="background:#111;border:1px solid #222;border-radius:6px;padding:8px;">
+          <div style="color:#888;font-size:9px;margin-bottom:4px">TOP ARTISTS</div>
+          <div style="color:#ccc;font-size:10px">1. The Weeknd</div>
+          <div style="color:#ccc;font-size:10px">2. Drake</div>
+          <div style="color:#ccc;font-size:10px">3. Travis Scott</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Stats + Grid</h3>
+      <p>Stat cards at top, then top tracks and top artists side by side. Clean and scannable.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0d1117;padding:16px;font-family:monospace;font-size:11px;">
+      <div style="display:flex;gap:8px;margin-bottom:10px;">
+        <div style="background:#111;border:1px solid #1db954;border-radius:20px;padding:3px 10px;color:#1db954;font-size:9px">4 weeks</div>
+        <div style="background:#111;border:1px solid #333;border-radius:20px;padding:3px 10px;color:#555;font-size:9px">6 months</div>
+        <div style="background:#111;border:1px solid #333;border-radius:20px;padding:3px 10px;color:#555;font-size:9px">all time</div>
+      </div>
+      <div style="display:flex;gap:6px;margin-bottom:6px;">
+        <div style="background:#111;border:1px solid #222;border-radius:6px;padding:8px;flex:1">
+          <div style="color:#888;font-size:9px;margin-bottom:6px">TOP TRACKS</div>
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+            <div style="width:24px;height:24px;background:#222;border-radius:3px;flex-shrink:0"></div>
+            <div><div style="color:#ccc;font-size:10px">Blinding Lights</div><div style="color:#555;font-size:9px">The Weeknd</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+            <div style="width:24px;height:24px;background:#222;border-radius:3px;flex-shrink:0"></div>
+            <div><div style="color:#ccc;font-size:10px">Starboy</div><div style="color:#555;font-size:9px">The Weeknd</div></div>
+          </div>
+        </div>
+        <div style="background:#111;border:1px solid #222;border-radius:6px;padding:8px;flex:1">
+          <div style="color:#888;font-size:9px;margin-bottom:6px">TOP ARTISTS</div>
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+            <div style="width:24px;height:24px;background:#333;border-radius:50%;flex-shrink:0"></div>
+            <div style="color:#ccc;font-size:10px">The Weeknd</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <div style="width:24px;height:24px;background:#333;border-radius:50%;flex-shrink:0"></div>
+            <div style="color:#ccc;font-size:10px">Drake</div>
+          </div>
+        </div>
+      </div>
+      <div style="background:#111;border:1px solid #222;border-radius:6px;padding:8px;">
+        <div style="color:#888;font-size:9px;margin-bottom:4px">RECENTLY PLAYED</div>
+        <div style="display:flex;gap:6px;">
+          <div style="width:28px;height:28px;background:#222;border-radius:3px;flex-shrink:0"></div>
+          <div style="width:28px;height:28px;background:#222;border-radius:3px;flex-shrink:0"></div>
+          <div style="width:28px;height:28px;background:#222;border-radius:3px;flex-shrink:0"></div>
+          <div style="width:28px;height:28px;background:#222;border-radius:3px;flex-shrink:0"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Time filter + Full Feed</h3>
+      <p>Time range toggle (4 weeks / 6 months / all time) at top. Tracks and artists with album art, recent plays strip below.</p>
+    </div>
+  </div>
+
+</div>
