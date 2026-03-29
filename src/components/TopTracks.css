@@ -1,17 +1,44 @@
 .top-tracks h2 { font-size: 1rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-dim); }
 
-.track-list { display: flex; flex-direction: column; gap: 0.5rem; }
+.track-list { display: flex; flex-direction: column; gap: 0.35rem; }
+
+.track-skeleton {
+  height: 52px;
+  border-radius: 6px;
+  background: var(--surface);
+  animation: skeleton-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
 
 .track-item {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.5rem;
+  padding: 0.5rem 0.6rem;
   border-radius: 6px;
-  transition: background 0.15s;
+  border-left: 2px solid transparent;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s, border-color 0.15s;
+  animation: fade-in 0.3s ease both;
 }
 
-.track-item:hover { background: var(--surface); }
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.track-item:hover {
+  background: var(--surface);
+  border-left-color: var(--green);
+}
+
+.track-item:hover .track-rank { color: var(--green); }
+.track-item:hover .track-name { color: var(--green); }
 
 .track-rank {
   width: 20px;
@@ -19,6 +46,14 @@
   font-size: 0.8rem;
   color: var(--text-faint);
   flex-shrink: 0;
+  transition: color 0.15s;
+}
+
+.track-art-wrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
 }
 
 .track-art {
@@ -26,11 +61,29 @@
   height: 40px;
   border-radius: 4px;
   object-fit: cover;
-  flex-shrink: 0;
   background: var(--surface);
+  transition: transform 0.15s;
 }
 
-.track-info { min-width: 0; }
+.track-item:hover .track-art { transform: scale(1.08); }
+
+.track-play-btn {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.6);
+  border-radius: 4px;
+  font-size: 0.7rem;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.track-item:hover .track-play-btn { opacity: 1; }
+
+.track-info { min-width: 0; flex: 1; }
 
 .track-name {
   font-size: 0.88rem;
@@ -38,6 +91,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  transition: color 0.15s;
 }
 
 .track-artist {
@@ -47,3 +101,13 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.track-duration {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.track-item:hover .track-duration { opacity: 1; }

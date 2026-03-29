@@ -16,12 +16,15 @@ export interface SpotifyArtist {
   id: string
   name: string
   images: SpotifyImage[]
+  external_urls: { spotify: string }
 }
 
 export interface SpotifyTrack {
   id: string
   name: string
   artists: SpotifyArtist[]
+  duration_ms: number
+  external_urls: { spotify: string }
   album: {
     name: string
     images: SpotifyImage[]

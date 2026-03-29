@@ -11,13 +11,24 @@ export default function TopArtists({ artists, loading }: Props) {
     <div className="top-artists">
       <h2>Top Artists</h2>
       {loading ? (
-        <p style={{ color: 'var(--text-faint)', fontSize: '0.85rem' }}>Loading...</p>
+        <div className="artist-list">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <div key={i} className="artist-skeleton" />
+          ))}
+        </div>
       ) : artists.length === 0 ? (
         <p style={{ color: 'var(--text-faint)', fontSize: '0.85rem' }}>No artists found.</p>
       ) : (
         <div className="artist-list">
           {artists.map((artist, i) => (
-            <div key={artist.id} className="artist-item">
+            <a
+              key={artist.id}
+              className="artist-item"
+              href={artist.external_urls.spotify}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ animationDelay: `${i * 30}ms` }}
+            >
               <span className="artist-rank">{i + 1}</span>
               <img
                 className="artist-photo"
@@ -25,7 +36,7 @@ export default function TopArtists({ artists, loading }: Props) {
                 alt={artist.name}
               />
               <div className="artist-name">{artist.name}</div>
-            </div>
+            </a>
           ))}
         </div>
       )}

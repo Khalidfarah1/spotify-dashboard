@@ -1,17 +1,44 @@
 .top-artists h2 { font-size: 1rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-dim); }
 
-.artist-list { display: flex; flex-direction: column; gap: 0.5rem; }
+.artist-list { display: flex; flex-direction: column; gap: 0.35rem; }
+
+.artist-skeleton {
+  height: 52px;
+  border-radius: 6px;
+  background: var(--surface);
+  animation: skeleton-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
 
 .artist-item {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.5rem;
+  padding: 0.5rem 0.6rem;
   border-radius: 6px;
-  transition: background 0.15s;
+  border-left: 2px solid transparent;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s, border-color 0.15s;
+  animation: fade-in 0.3s ease both;
 }
 
-.artist-item:hover { background: var(--surface); }
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.artist-item:hover {
+  background: var(--surface);
+  border-left-color: var(--green);
+}
+
+.artist-item:hover .artist-rank { color: var(--green); }
+.artist-item:hover .artist-name { color: var(--green); }
 
 .artist-rank {
   width: 20px;
@@ -19,6 +46,7 @@
   font-size: 0.8rem;
   color: var(--text-faint);
   flex-shrink: 0;
+  transition: color 0.15s;
 }
 
 .artist-photo {
@@ -28,6 +56,12 @@
   object-fit: cover;
   flex-shrink: 0;
   background: var(--surface);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.artist-item:hover .artist-photo {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 2px var(--green);
 }
 
 .artist-name {
@@ -36,4 +70,5 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  transition: color 0.15s;
 }
