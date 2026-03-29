@@ -9,6 +9,7 @@ import TimeRangeToggle from '../components/TimeRangeToggle'
 import TopTracks from '../components/TopTracks'
 import TopArtists from '../components/TopArtists'
 import RecentlyPlayed from '../components/RecentlyPlayed'
+import StatsBar from '../components/StatsBar'
 import './Dashboard.css'
 
 export default function Dashboard() {
@@ -87,6 +88,7 @@ export default function Dashboard() {
     <div className="dashboard">
       <Header user={user} />
       <div className="dashboard-body">
+        <StatsBar tracks={tracks} artists={artists} recentlyPlayed={recentlyPlayed} loading={loadingTracks || loadingArtists} />
         <div className="dashboard-top-bar">
           <TimeRangeToggle value={timeRange} onChange={setTimeRange} />
           <Link to="/top5" className="top5-link">View Top 5 ↗</Link>
