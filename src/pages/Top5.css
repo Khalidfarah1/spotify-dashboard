@@ -34,6 +34,24 @@
   flex: 1;
 }
 
+.top5-share-btn {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--green);
+  padding: 0.45rem 1.1rem;
+  border: 1px solid rgba(29,185,84,0.3);
+  border-radius: 9999px;
+  background: none;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.top5-share-btn:hover {
+  background: rgba(29,185,84,0.1);
+  border-color: var(--green);
+}
+
 .top5-toggle {
   display: flex;
   gap: 0.4rem;

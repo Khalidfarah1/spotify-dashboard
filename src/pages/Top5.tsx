@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { getToken } from '../auth'
 import { getTopTracks, getTopArtists } from '../api'
 import type { SpotifyTrack, SpotifyArtist, TimeRange } from '../types'
+import ShareCard from '../components/ShareCard'
 import './Top5.css'
 
 const TIME_LABELS: Record<TimeRange, string> = {
@@ -17,6 +18,7 @@ export default function Top5() {
   const [tracks, setTracks] = useState<SpotifyTrack[]>([])
   const [artists, setArtists] = useState<SpotifyArtist[]>([])
   const [loading, setLoading] = useState(true)
+  const [showShare, setShowShare] = useState(false)
 
   useEffect(() => {
     const token = getToken()
@@ -40,6 +42,9 @@ export default function Top5() {
       <div className="top5-header">
         <button className="top5-back" onClick={() => navigate('/dashboard')}>← Back</button>
         <h1 className="top5-title">Your Top 5</h1>
+        {!loading && (
+          <button className="top5-share-btn" onClick={() => setShowShare(true)}>Share ↗</button>
+        )}
         <div className="top5-toggle">
           {(Object.entries(TIME_LABELS) as [TimeRange, string][]).map(([val, label]) => (
             <button
@@ -109,6 +114,15 @@ export default function Top5() {
           </div>
         </section>
       </div>
+
+      {showShare && (
+        <ShareCard
+          tracks={tracks}
+          artists={artists}
+          timeRange={timeRange}
+          onClose={() => setShowShare(false)}
+        />
+      )}
     </div>
   )
 }
