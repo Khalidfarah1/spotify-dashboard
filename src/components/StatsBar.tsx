@@ -1,4 +1,5 @@
 import type { SpotifyTrack, SpotifyArtist, SpotifyRecentlyPlayedItem } from '../types'
+import { useCountUp } from '../hooks/useCountUp'
 import './StatsBar.css'
 
 interface Props {
@@ -24,41 +25,64 @@ function uniqueArtists(tracks: SpotifyTrack[]): number {
   return new Set(tracks.flatMap(t => t.artists.map(a => a.id))).size
 }
 
+interface CountStatProps {
+  value: number
+  loading: boolean
+}
+
+function CountStat({ value, loading }: CountStatProps) {
+  const displayed = useCountUp(value, 900, !loading && value > 0)
+  if (loading) return <div className="stat-value-skeleton" />
+  return <div className="stat-value">{displayed}</div>
+}
+
+interface TextStatProps {
+  value: string
+  loading: boolean
+}
+
+function TextStat({ value, loading }: TextStatProps) {
+  if (loading) return <div className="stat-value-skeleton" />
+  return <div className="stat-value stat-value--text">{value}</div>
+}
+
 export default function StatsBar({ tracks, artists, recentlyPlayed, loading }: Props) {
-  const stats = [
-    {
-      label: 'Top Genre',
-      value: topGenre(artists),
-      icon: '🎵',
-    },
-    {
-      label: 'Unique Artists',
-      value: uniqueArtists(tracks).toString(),
-      icon: '🎤',
-    },
-    {
-      label: 'Top Track',
-      value: tracks[0]?.name ?? '—',
-      icon: '🏆',
-    },
-    {
-      label: 'Recent Plays',
-      value: recentlyPlayed.length ? `${recentlyPlayed.length} tracks` : '—',
-      icon: '🕐',
-    },
-  ]
+  const artistCount = uniqueArtists(tracks)
+  const recentCount = recentlyPlayed.length
 
   return (
     <div className="stats-bar">
-      {stats.map(stat => (
-        <div key={stat.label} className={`stat-card${loading ? ' stat-card--loading' : ''}`}>
-          <span className="stat-icon">{stat.icon}</span>
-          <div className="stat-content">
-            <div className="stat-value">{loading ? '' : stat.value}</div>
-            <div className="stat-label">{stat.label}</div>
-          </div>
+      <div className="stat-card" style={{ animationDelay: '0ms' }}>
+        <span className="stat-icon">🎵</span>
+        <div className="stat-content">
+          <TextStat value={topGenre(artists)} loading={loading} />
+          <div className="stat-label">Top Genre</div>
         </div>
-      ))}
+      </div>
+
+      <div className="stat-card" style={{ animationDelay: '60ms' }}>
+        <span className="stat-icon">🎤</span>
+        <div className="stat-content">
+          <CountStat value={artistCount} loading={loading} />
+          <div className="stat-label">Unique Artists</div>
+        </div>
+      </div>
+
+      <div className="stat-card" style={{ animationDelay: '120ms' }}>
+        <span className="stat-icon">🏆</span>
+        <div className="stat-content">
+          <TextStat value={tracks[0]?.name ?? '—'} loading={loading} />
+          <div className="stat-label">Top Track</div>
+        </div>
+      </div>
+
+      <div className="stat-card" style={{ animationDelay: '180ms' }}>
+        <span className="stat-icon">🕐</span>
+        <div className="stat-content">
+          <CountStat value={recentCount} loading={loading} />
+          <div className="stat-label">Recent Plays</div>
+        </div>
+      </div>
     </div>
   )
 }
