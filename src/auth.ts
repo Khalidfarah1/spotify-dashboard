@@ -55,9 +55,13 @@ export async function exchangeCodeForToken(code: string): Promise<string> {
     }),
   })
 
-  if (!response.ok) throw new Error('Token exchange failed')
+  if (!response.ok) {
+    const errorBody = await response.text().catch(() => '')
+    throw new Error(`Token exchange failed (${response.status}): ${errorBody}`)
+  }
 
-  const data = await response.json()
+  const data: { access_token?: string } = await response.json()
+  if (!data.access_token) throw new Error('Token exchange response missing access_token')
   sessionStorage.setItem(TOKEN_KEY, data.access_token)
   sessionStorage.removeItem(VERIFIER_KEY)
   return data.access_token
