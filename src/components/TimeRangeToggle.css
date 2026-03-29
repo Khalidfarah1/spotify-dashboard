@@ -1,0 +1,23 @@
+.time-toggle {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.time-toggle-btn {
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  transition: all 0.15s;
+}
+
+.time-toggle-btn:hover { border-color: var(--text-dim); color: var(--text); }
+
+.time-toggle-btn.active {
+  background: var(--green);
+  border-color: var(--green);
+  color: #000;
+}
