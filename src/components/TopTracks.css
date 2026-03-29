@@ -35,6 +35,11 @@
 
 .track-search::placeholder { color: var(--text-faint); }
 
+@media (max-width: 400px) {
+  .track-search { width: 90px; }
+  .track-search:focus { width: 110px; }
+}
+
 .top-tracks h2 {
   font-size: 0.78rem;
   font-weight: 700;

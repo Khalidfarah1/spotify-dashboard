@@ -39,7 +39,7 @@
 
 .genre-row {
   display: grid;
-  grid-template-columns: 140px 1fr 24px;
+  grid-template-columns: 120px 1fr 24px;
   align-items: center;
   gap: 0.75rem;
   animation: fade-in 0.35s ease both;

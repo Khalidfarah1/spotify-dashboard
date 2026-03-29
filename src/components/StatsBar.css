@@ -9,6 +9,12 @@
   .stats-bar { grid-template-columns: repeat(2, 1fr); }
 }
 
+@media (max-width: 400px) {
+  .stats-bar { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .stat-card { padding: 0.875rem 1rem; }
+  .stat-icon { font-size: 1.1rem; }
+}
+
 .stat-card {
   display: flex;
   align-items: center;
