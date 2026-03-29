@@ -20,8 +20,15 @@ body {
   background-image:
     radial-gradient(ellipse 80% 40% at 50% -10%, rgba(29,185,84,0.08) 0%, transparent 70%);
   color: var(--text);
-  font-family: 'Circular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .header-brand, .login-logo, .top5-title {
+  font-family: 'Outfit', 'Inter', sans-serif;
 }
 
 img { display: block; }
