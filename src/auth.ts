@@ -1,5 +1,5 @@
 const CLIENT_ID = import.meta.env.VITE_SPOTIFY_CLIENT_ID as string
-const REDIRECT_URI = import.meta.env.VITE_REDIRECT_URI as string
+const REDIRECT_URI = import.meta.env.VITE_REDIRECT_URI || 'https://spotify-dashboard-tau.vercel.app/dashboard'
 const SCOPES = 'user-top-read user-read-recently-played user-read-private'
 const TOKEN_KEY = 'spotify_access_token'
 const VERIFIER_KEY = 'spotify_code_verifier'
