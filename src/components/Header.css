@@ -3,7 +3,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  background: var(--bg2);
+  background: rgba(14,14,14,0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
@@ -25,26 +27,31 @@
 }
 
 .header-avatar {
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   object-fit: cover;
   background: var(--surface);
+  border: 2px solid var(--border);
 }
 
 .header-name {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 600;
   color: var(--text-dim);
 }
 
 .header-logout {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--text-faint);
-  padding: 0.4rem 0.75rem;
+  padding: 0.35rem 0.9rem;
   border: 1px solid var(--border);
   border-radius: 9999px;
-  transition: color 0.2s, border-color 0.2s;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
 }
 
-.header-logout:hover { color: var(--text); border-color: var(--text-dim); }
+.header-logout:hover {
+  color: var(--text);
+  border-color: rgba(255,255,255,0.2);
+  background: var(--surface);
+}

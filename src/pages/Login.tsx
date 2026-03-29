@@ -7,7 +7,7 @@ export default function Login() {
       <div className="login-logo">
         <span>Spotify</span> Stats
       </div>
-      <p className="login-title">
+      <p className="login-tagline">
         See your top tracks, top artists, and listening history — all in one place.
       </p>
       <button className="login-btn" onClick={redirectToSpotifyLogin}>
