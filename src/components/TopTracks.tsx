@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { SpotifyTrack } from '../types'
 import './TopTracks.css'
 
@@ -13,9 +14,28 @@ function formatDuration(ms: number) {
 }
 
 export default function TopTracks({ tracks, loading }: Props) {
+  const [query, setQuery] = useState('')
+  const filtered = query.trim()
+    ? tracks.filter(t =>
+        t.name.toLowerCase().includes(query.toLowerCase()) ||
+        t.artists.some(a => a.name.toLowerCase().includes(query.toLowerCase()))
+      )
+    : tracks
+
   return (
     <div className="top-tracks">
-      <h2>Top Tracks</h2>
+      <div className="top-tracks-header">
+        <h2>Top Tracks</h2>
+        {!loading && (
+          <input
+            className="track-search"
+            type="text"
+            placeholder="Filter..."
+            value={query}
+            onChange={e => setQuery(e.target.value)}
+          />
+        )}
+      </div>
       {loading ? (
         <div className="track-list">
           {Array.from({ length: 8 }).map((_, i) => (
@@ -24,9 +44,11 @@ export default function TopTracks({ tracks, loading }: Props) {
         </div>
       ) : tracks.length === 0 ? (
         <p style={{ color: 'var(--text-faint)', fontSize: '0.85rem' }}>No tracks found.</p>
+      ) : filtered.length === 0 ? (
+        <p style={{ color: 'var(--text-faint)', fontSize: '0.85rem' }}>No tracks match.</p>
       ) : (
         <div className="track-list">
-          {tracks.map((track, i) => (
+          {filtered.map((track, i) => (
             <a
               key={track.id}
               className="track-item"
